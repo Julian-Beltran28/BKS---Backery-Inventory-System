@@ -4,10 +4,12 @@ import { useAuth } from "./context/useAuth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Pagina principal 
+import Principal from "./pages/Principal"
 import Login from "./pages/Login";
 // Importaciones de las demas vistas
 import LayoutGeneral from "../Layouts/LayoutGeneral";
 import Catalogo from "./pages/Catalogo";
+
 
 
 // Wrapper para obtener ID del usuario autenticado y pasarlo al componente del usuario
@@ -52,11 +54,12 @@ function AppRoutes() {
   
   return (
     <Routes>
-      {/* Usuario no logueado → Login visible */}
-      <Route path="/" element={<Login />} />
+      {/* rutas publica Landing Page*/}
+      <Route path="/" element={<Principal />} />
+      {/* Login */}
       <Route path="/login" element={<Login />} />
 
-      {/* Compartido para todos los roles */}
+      {/* Rutas protegidas*/}
       <Route 
         path="/admin/*"
         element={
@@ -68,8 +71,7 @@ function AppRoutes() {
         <Route index element={<Catalogo />}/>
       </Route>
 
-      {/* Catch-all redirect */}
-      <Route path="*" element={<Navigate to="/login" />} />
+      
     </Routes>
   );
 }

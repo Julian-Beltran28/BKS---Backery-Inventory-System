@@ -1,23 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.login-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-html, body, #root {
-  height: 100%;
-}
-body {
-    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-}
-.login-page{
-    width: 100vw;        /* fuerza a ocupar todo el ancho del viewport */
-    min-height: 100vh;   /* mínimo la altura de la pantalla */
-    display: flex;
-    justify-content: center;   /* centra horizontalmente */
-    align-items: center;       /* centra verticalmente */
-    position: relative;
-    overflow: hidden;         
+
+.login-page .bg-shapes {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#00000049, #00000049),
+    url('../assets/varios-panes-madera.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 .login-page .login-container {
     max-width: 500px;
@@ -27,22 +26,8 @@ body {
     z-index: 1;
 }
 
-/* Fondo de login */
-.bg-shapes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#00000049, #00000049), url('../assets/varios-panes-madera.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    z-index: -2;
-}
 
-.container-fluid {
+.login-page .container-fluid {
     display: flex;
     justify-content: center;
     flex-direction: column;

@@ -1,0 +1,39 @@
+.Footer {
+    display: flex;              /* 🔑 */
+    align-items: center;        /* centra vertical */
+    gap: 40px;                  /* espacio entre imagen y texto */
+    padding: 60px 10%;
+    background-color: #8B5E3C;
+    justify-content: space-between;
+}
+
+
+.Bloque_Logo {                /* evita que se salga al hacer zoom */
+    border-radius: 16px;               /* bordes suaves */
+    order: 1;
+    background-color: aliceblue;
+    
+}
+
+.Bloque_Logo img {
+    width: 10%;
+    display: block;
+}
+
+.Bloque_Info {
+    background-color: aliceblue;
+    order: 2;                    /* ocupa el resto del espacio */
+}   
+
+.Bloque_Info p {
+    font-size: 1.5rem;
+}
+.Bloque_Redes {
+    flex: 1;
+    order: 3;                    /* ocupa el resto del espacio */
+}   
+
+.Bloque_Redes p {
+    line-height: 1.6;
+    font-size: 1.5rem;
+}
