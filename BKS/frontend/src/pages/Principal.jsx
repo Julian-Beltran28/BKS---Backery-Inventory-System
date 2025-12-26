@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo_de_panaderia.avif";
 import Panes from "../assets/panes.jpg";
 
-
 // Css
 import "../css/Principal.css";
 // Componenetes y paginas necesarias
@@ -24,11 +23,11 @@ export default function Principal()  {
             navigate("/login");
         }, 1500);
     };
-    const handelLogin2 = async () => {
+    const handelRegistro = async () => {
         setLoading(true);
 
         setTimeout(() =>{
-            navigate("/login");
+            navigate("/register");
         }, 1500);
     };
 
@@ -51,7 +50,7 @@ export default function Principal()  {
                         </button>
                         
                         <button className="Registro"
-                        onClick={handelLogin2}
+                        onClick={handelRegistro}
                         disabled={loading}>Registrarse</button>
                     </div>
                     
@@ -88,8 +87,12 @@ export default function Principal()  {
                         </div>
 
                     </section>
+
+                    <section className="Seccion3">
+                        <h4 className="Titulo_catalogo">Catalogo Principal</h4>
+                        {/* Falta realizar maps para las cards */}
+                    </section>
                 </main>
-                        <h4>Catalogo Principal</h4>
                 
                 
                 {/* Cards de los productos principales */}

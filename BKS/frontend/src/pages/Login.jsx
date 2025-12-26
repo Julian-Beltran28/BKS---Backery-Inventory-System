@@ -7,9 +7,11 @@ import '../css/Login.css';
 // Pages o components necesarios
 import { useAuth } from "../context/useAuth";
 import ToastNotification from "../components/ToastNotification";
+import LoadingOverlay from "../components/LoandingOverlay";
 
 //import de alerta y axios
 import axios from "axios";
+
 //import Swal from "sweetalert2";
 
 export default function Login() {
@@ -20,6 +22,7 @@ export default function Login() {
     const [showPass, setShowPass] = useState(false);
     // Carga de los campos
     const [loading, setLoanding] = useState(false);
+    const [carga, setCarga] = useState(false);
     
     // auth
     const { login } = useAuth();
@@ -47,6 +50,15 @@ export default function Login() {
             ...prev,
             isVisible: false,
         }));
+    };
+
+    // Loading para regresar
+    const handelRegresar = async () => {
+        setCarga(true);
+
+        setTimeout(() =>{
+            navigate("/");
+        }, 1500);
     };
 
     // Conexion a la los controladores y apis
@@ -92,6 +104,7 @@ export default function Login() {
 
     return (
         <>
+            <LoadingOverlay visible={carga} text="Cargando..."/>
             <div className="login-page">
                 <div className="bg-shapes">
                     <div className="shape"></div>
@@ -154,7 +167,10 @@ export default function Login() {
                                 </span>
                             </div>
                             {/* Boton */}
-                            <button type="submit" className="btn-custom w-100" disabled={loading}>{loading ? "Validando..." : "Iniciar Sesión"}</button>
+                            <div className="Botones">
+                                <button type="submit" className="btn-custom " disabled={loading}>{loading ? "Validando..." : "Iniciar Sesión"}</button>
+                                <button className="btn-custom " onClick={handelRegresar} disabled={carga}>{carga ? "Regresando..." : "Regresar"}</button>
+                            </div>
                         </form>
                     </div>
                 </div>

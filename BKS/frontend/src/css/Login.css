@@ -107,8 +107,8 @@ form {
 }
 
 /* Botón si lo necesitas */
-button {
-  margin-top: 15px;
+.btn-custom{
+  margin: 15px;
   padding: 12px 24px;
   border: 1px solid black;
   border-radius: 8px;
@@ -119,7 +119,12 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+.btn-custom:hover {
   background-color: #a4714f;
-  border: 1px solid #a4714f;
+  border: 1px solid #000000;
+}
+
+.Botones{
+  display: flex;
+  justify-content: center;
 }

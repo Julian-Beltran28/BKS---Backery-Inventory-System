@@ -1,0 +1,50 @@
+
+
+aside {
+    display: flex;                   
+    min-height: 100vh;
+    position: relative; /* CLAVE */
+}
+
+
+.Bloque_uno {
+    flex: 6;
+    background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('../assets/varios-panes-madera.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-right: 20%;
+}
+
+.Bloque_uno img { 
+    width: 50%;
+}
+
+
+/* .Bloque_dos {
+    flex: 1;                    
+}    */
+
+/* .Bloque_dos p {
+    line-height: 1.6;
+    font-size: 1.5rem;
+} */
+
+.FormularioRegistro{
+    position: absolute;   /* SALE DEL FLUJO */
+    right: 5%;
+    top: 50%;
+    width: 420px;
+    padding: 60px;
+    transform: translateY(-50%);
+    flex: 4;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    z-index: 10;
+    height: 60%;
+}
+

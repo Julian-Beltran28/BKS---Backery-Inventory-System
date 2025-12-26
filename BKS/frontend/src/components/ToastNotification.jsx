@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-// import '../css/ToastNotification.css';
+import '../css/ToastNotification.css'; 
 
 const ToastNotification = ({ message, type, isVisible, onClose, duration = 4000}) => {
     useEffect(() => {
@@ -32,6 +32,7 @@ const ToastNotification = ({ message, type, isVisible, onClose, duration = 4000}
     return (
         <div className={`toast-notification toast-${type} ${isVisible ? 'toast-show' : ''}`}>
             <div className="toast-content">
+                
                 <span className="toast-icon">{getIcon()}</span>
                 <span className="toast-message">{message}</span>
                 <button className="toast-close" onClick={onClose}>

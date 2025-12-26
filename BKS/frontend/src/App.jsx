@@ -3,9 +3,11 @@ import { AuthProvider} from "./context/AuthProvider";
 import { useAuth } from "./context/useAuth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Pagina principal 
-import Principal from "./pages/Principal"
+// Pagina principal y publicas
+import Principal from "./pages/Principal";
 import Login from "./pages/Login";
+import Register from "./pages/Registro";
+
 // Importaciones de las demas vistas
 import LayoutGeneral from "../Layouts/LayoutGeneral";
 import Catalogo from "./pages/Catalogo";
@@ -56,8 +58,10 @@ function AppRoutes() {
     <Routes>
       {/* rutas publica Landing Page*/}
       <Route path="/" element={<Principal />} />
-      {/* Login */}
+      {/* Inicio de sesion */}
       <Route path="/login" element={<Login />} />
+      {/* Registro */}
+      <Route path="/register" element={<Register />} />
 
       {/* Rutas protegidas*/}
       <Route 
