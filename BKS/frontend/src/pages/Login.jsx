@@ -22,7 +22,8 @@ export default function Login() {
     const [showPass, setShowPass] = useState(false);
     // Carga de los campos
     const [loading, setLoanding] = useState(false);
-    const [carga, setCarga] = useState(false);
+    const [cargaRegresar, setCargaRegresar] = useState(false);
+    const [cargaFomulario, setCargaFormulario] = useState(false);
     
     // auth
     const { login } = useAuth();
@@ -54,10 +55,18 @@ export default function Login() {
 
     // Loading para regresar
     const handelRegresar = async () => {
-        setCarga(true);
+        setCargaRegresar(true);
 
         setTimeout(() =>{
             navigate("/");
+        }, 1500);
+    };
+    // Loading para regresar
+    const handelFormulario = async () => {
+        setCargaFormulario(true);
+
+        setTimeout(() =>{
+            navigate("/register");
         }, 1500);
     };
 
@@ -104,7 +113,8 @@ export default function Login() {
 
     return (
         <>
-            <LoadingOverlay visible={carga} text="Cargando..."/>
+            <LoadingOverlay visible={cargaFomulario} text="Cargando..."/>
+            <LoadingOverlay visible={cargaRegresar} text="Cargando..."/>
             <div className="login-page">
                 <div className="bg-shapes">
                     <div className="shape"></div>
@@ -124,17 +134,13 @@ export default function Login() {
                 <div className="container-fluid">
                         <h1 className="title text-center mb-3">Inicio de sesión</h1>
                     <div className="form-container">
-                        <div className="login-icon">
-                            <i className="bi bi-person-fill"></i>
-                        </div>
+                        
                         <p className="text-muted text-center mb-4">Bienvenido a BKS</p>
 
                         <form onSubmit={handelSubmit}>
                             {/* Correo electronico */}
                             <div className="input-group-custom">
-                                <span className="input-icon">
-                                    <i className="bi bi-envelope-fill"></i>
-                                </span>
+                                
                                 <input type="email"
                                     className="form-control-custom"
                                     placeholder="Correo electrónico"
@@ -143,33 +149,26 @@ export default function Login() {
                                     required />
                             </div>
                             {/* Contraseña */}
-                            <div className="input-group-custom position-relative">
-                                <span className="input-icon">
-                                    <i className="bi bi-lock-fill"></i>
-                                </span>
+                            <div className="Campo-password">
                                 <input type={showPass ? "text" : "password"}
-                                className="form-control-custom"
-                                placeholder="Contraseña"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required />
-                                <span 
-                                className="toogle-password"
-                                onClick={() => setShowPass(!showPass)}
-                                style={{
-                                    position: "absolute",
-                                    right: "10px",
-                                    top: "50%",
-                                    transform: "translateY(-50%)",
-                                    cursor: "pointer",
-                                }}>
+                                    className="form-control-custom"
+                                    placeholder="Contraseña"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required />
+                                <span className="toggle" onClick={() => setShowPass(!showPass)}>
                                     <i className={showPass ? "bi bi-eye-slash" : "bi bi-eye"}></i>
                                 </span>
+                            </div>
+
+                            <div className="Ayuda">
+                                <button type="button" className="Pregunta" onClick={handelFormulario} disabled={cargaFomulario}>¿No tienes cueta? <span className="Crear">Crea una</span></button>
+                                <button type="button" className="Pregunta" onClick={handelFormulario} disabled={loading}>Se me olvido la contraseña</button>
                             </div>
                             {/* Boton */}
                             <div className="Botones">
                                 <button type="submit" className="btn-custom " disabled={loading}>{loading ? "Validando..." : "Iniciar Sesión"}</button>
-                                <button className="btn-custom " onClick={handelRegresar} disabled={carga}>{carga ? "Regresando..." : "Regresar"}</button>
+                                <button className="btn-custom " onClick={handelRegresar} disabled={cargaRegresar}>{cargaRegresar ? "Regresando..." : "Regresar"}</button>
                             </div>
                         </form>
                     </div>

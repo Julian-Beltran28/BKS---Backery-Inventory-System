@@ -132,3 +132,8 @@ header{
     text-align: center;
     font-size: 2rem;
 }
+
+.BotonesPrincipales button:hover {
+    background: #486116;
+    transform: translateY(-1px);
+}

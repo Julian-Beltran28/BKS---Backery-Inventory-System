@@ -128,3 +128,39 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.Ayuda{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.Ayuda button{
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+
+.Ayuda span{
+  color: #334d01;
+}
+
+.Campo-password {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Campo-password .toggle {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    margin-right: 150px;
+    font-size: 1.3rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000000;
+}

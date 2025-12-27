@@ -3,9 +3,10 @@
 .Footer {
     display: flex;              
     align-items: center;        
-    justify-content: space-evenly;                
+    justify-content: space-between;                
     padding: 30px 10%;
     background-color: #8B5E3C;
+    border-top: 1px solid black;
 }
 
 .Bloque_Logo  {
@@ -15,8 +16,9 @@
 
 
 .Bloque_Logo img {
-    width: 70%;
-    border-radius: 10%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 .Bloque_Info {
@@ -48,6 +50,12 @@
     text-decoration: none;
     color: black;
     flex-direction: column;
+    transition:  transform 0.1s ease;
+}
+
+.red-social:hover{
+    color: azure;
+    transition: 1s;
 }
 .icon3 {
     font-size: 40px;
