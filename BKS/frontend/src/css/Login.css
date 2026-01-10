@@ -140,7 +140,6 @@ form {
   background: none;
   border: none;
   cursor: pointer;
-  border-bottom: 1px solid black;
 }
 
 .Ayuda span{
@@ -163,4 +162,9 @@ form {
     transform: translateY(-50%);
     cursor: pointer;
     color: #000000;
+}
+
+.Pregunta:hover {
+  text-decoration: underline;
+  transition: 1s;
 }

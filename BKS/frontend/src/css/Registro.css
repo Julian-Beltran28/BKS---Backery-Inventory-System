@@ -48,7 +48,7 @@ aside {
     height: 600px;
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     font-size: 1.3rem;
     border-radius: 8px;
     border: 0.1px solid black;
@@ -70,7 +70,7 @@ aside {
     align-items: center;
     padding: 100px;
     z-index: 10;
-    height: 60%;
+    height: 70%;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -146,14 +146,15 @@ aside {
 .FormularioRegistro .pregunta{
     margin-top: 10px;
     width: 100%;
-    margin-bottom: 20px;
-}
-
-.FormularioRegistro .pregunta {
     background: none;
     border: none;
     cursor: pointer;
-    border-bottom: 1px solid black;
+}
+
+
+.pregunta:hover{
+    transition: 1s ease;
+    text-decoration:underline;
 }
 
 .FormularioRegistro .pregunta span{

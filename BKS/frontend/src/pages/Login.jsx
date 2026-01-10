@@ -24,6 +24,7 @@ export default function Login() {
     const [loading, setLoanding] = useState(false);
     const [cargaRegresar, setCargaRegresar] = useState(false);
     const [cargaFomulario, setCargaFormulario] = useState(false);
+    const [cargaRecuperar, setFormularioRecuperar] = useState(false);
     
     // auth
     const { login } = useAuth();
@@ -53,7 +54,7 @@ export default function Login() {
         }));
     };
 
-    // Loading para regresar
+    // Loading para regresar (Pagina Principal)
     const handelRegresar = async () => {
         setCargaRegresar(true);
 
@@ -61,12 +62,20 @@ export default function Login() {
             navigate("/");
         }, 1500);
     };
-    // Loading para regresar
+    // Loading para el registro
     const handelFormulario = async () => {
         setCargaFormulario(true);
 
         setTimeout(() =>{
             navigate("/register");
+        }, 1500);
+    };
+    // Loading parara el formulario de recuperar contraseña
+    const FormularioRecuperar = async () => {
+        setFormularioRecuperar(true);
+
+        setTimeout(() =>{
+            navigate("/Recuperar");
         }, 1500);
     };
 
@@ -108,13 +117,12 @@ export default function Login() {
         }
     };
 
-    // Debug: Verificar si el componente se está renderizando
-    console.log("Login component rendering");
 
     return (
         <>
             <LoadingOverlay visible={cargaFomulario} text="Cargando..."/>
             <LoadingOverlay visible={cargaRegresar} text="Cargando..."/>
+            <LoadingOverlay visible={cargaRecuperar} text="Cargando..."/>
             <div className="login-page">
                 <div className="bg-shapes">
                     <div className="shape"></div>
@@ -163,7 +171,7 @@ export default function Login() {
 
                             <div className="Ayuda">
                                 <button type="button" className="Pregunta" onClick={handelFormulario} disabled={cargaFomulario}>¿No tienes cueta? <span className="Crear">Crea una</span></button>
-                                <button type="button" className="Pregunta" onClick={handelFormulario} disabled={loading}>Se me olvido la contraseña</button>
+                                <button type="button" className="Pregunta" onClick={FormularioRecuperar} disabled={loading}>Se me olvido la contraseña</button>
                             </div>
                             {/* Boton */}
                             <div className="Botones">

@@ -14,8 +14,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Rutas protegidas para el Admin
 Route::middleware(['auth.jwt','role:admin'])->group(function (){
-    // Ruta de Usuarios
-    Route::apiResource('usuarios', UsuarioController::class);
     // Ruta de Categorias
     Route::apiResource('categorias', CategoriaController::class);
     // Ruta de subcategorias
@@ -23,6 +21,9 @@ Route::middleware(['auth.jwt','role:admin'])->group(function (){
     // Ruta de Movimientos
     Route::apiResource('movimientos', MovimientoController::class);
 });
+
+// Ruta de Usuarios
+    Route::apiResource('usuarios', UsuarioController::class);
 
 // Rutas protegidas para el Cliente
 Route::middleware(['auth.jwt','role:admin,cliente'])->group(function (){

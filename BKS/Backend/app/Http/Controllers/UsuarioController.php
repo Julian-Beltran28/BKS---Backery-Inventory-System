@@ -20,18 +20,19 @@ class UsuarioController extends Controller
     {
         //Validamos todos los campos
         $request->validate([
-            'nombres' => 'nullable|string|max:50',
-            'apellidos' => 'nullable|string|max:50',
+            'nombres' => 'required|string|max:50',
+            'apellidos' => 'required|string|max:50',
             'tipo_Documento' => 'nullable|string|max:20',
             'numero_Documento' => 'nullable|string|max:100',
-            'numero_Celular' => 'nullable|string|max:100',
-            'contrasena' => 'required|string|max.255',
-            'correo_Empresarial' => 'required|string|max:100',
+            'numero_Celular' => 'required|string|max:100',
+            'contrasena' => 'required|string|max:255',
+            'correo_Empresarial' => 'nullable|string|max:100',
+            'correo_Personal' => 'nullable|string|max:100',
             'imagen_Usuario' => 'nullable|string|max:255',
             'activo' => 'nullable|boolean',
-            'id_Rol' => 'nullable|integer|exists:roles,id',
         ]);
         $data = $request->all();
+        $data['id_Rol'] = 3;
 
         //Encriptamos la contraseña
         $data['contrasena'] = Hash::make($request->contrasena);

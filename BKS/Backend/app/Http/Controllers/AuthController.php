@@ -33,7 +33,7 @@ class AuthController extends Controller
                     'correo_vacio' => empty($correo_Empresarial),
                     'contrasena_vacia' => empty($contrasena)
                 ]);
-                return response()->json(['mensaje' => 'Correo y contraseña son requeridos'], 400);
+                return response()->json(['mensaje' => 'Correo y contraseña son requeridos'], 422);
             }
 
             // Buscar usuario
@@ -42,13 +42,16 @@ class AuthController extends Controller
             $usuario = DB::table('usuarios')
                 ->join('roles', 'usuarios.id_Rol', '=', 'roles.id')
                 ->select('usuarios.*', 'roles.nombreRol as rol')
-                ->where('usuarios.correo_Empresarial', $correo_Empresarial)
+                ->where(function ($query) use ($correo_Empresarial){
+                    $query->where('usuarios.correo_Empresarial', $correo_Empresarial)
+                        ->orWhere('usuarios.correo_Personal', $correo_Empresarial);
+                })
                 ->first();
 
             Log::info('Resultado búsqueda:', ['encontrado' => $usuario ? 'Si' : 'No']);
 
             if (!$usuario) {
-                return response()->json(['mensaje' => 'Usuario no encontrado'], 404);
+                return response()->json(['mensaje' => 'Usuario no encontrado'], 401);
             }
 
             // Verificar contraseña
@@ -68,7 +71,14 @@ class AuthController extends Controller
                 'exp' => now()->addHours(3)->timestamp,
             ];
 
-            $token = JWT::encode($payload, env('JWT_SECRET'), 'HS256');
+            $jwtSecret = env('JWT_SECRET');
+
+            if (empty($jwtSecret)) {
+                Log::error('JWT_SECRET no está configurado en .env');
+                return response()->json(['mensaje' => 'Configuración del servidor incorrecta'], 500);
+            }
+
+            $token = JWT::encode($payload, $jwtSecret, 'HS256');
 
             Log::info('Login exitoso');
 

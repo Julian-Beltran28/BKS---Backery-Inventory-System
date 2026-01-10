@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Principal from "./pages/Principal";
 import Login from "./pages/Login";
 import Register from "./pages/Registro";
+import RecuperarContraseña from "./pages/R_Contrasena1";
+import RecuperarContraseña2 from "./pages/R_Contrasena2";
+import RecuperarContraseña3 from "./pages/R_Contrasena3";
 
 // Importaciones de las demas vistas
 import LayoutGeneral from "../Layouts/LayoutGeneral";
@@ -62,6 +65,10 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       {/* Registro */}
       <Route path="/register" element={<Register />} />
+      {/* Recuperacion de contraseña */}
+      <Route path="/Recuperar" element={<RecuperarContraseña />} />
+      <Route path="/Recuperar2" element={<RecuperarContraseña2 />} />
+      <Route path="/Recuperar3" element={<RecuperarContraseña3 />} />
 
       {/* Rutas protegidas*/}
       <Route 
@@ -74,6 +81,19 @@ function AppRoutes() {
       >
         <Route index element={<Catalogo />}/>
       </Route>
+
+      {/* Rutas protegidas*/}
+      <Route 
+        path="/cliente/*"
+        element={
+          <RutasProtegidas allowedRoles={["admin", "cliente", "usuario"]}>
+            <LayoutGeneral />
+          </RutasProtegidas>
+        }
+      >
+        <Route index element={<Catalogo />}/>
+      </Route>
+      
 
       
     </Routes>

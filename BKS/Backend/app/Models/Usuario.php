@@ -18,6 +18,7 @@ class Usuario extends Model
         'numero_Celular',
         'contrasena',
         'correo_Empresarial',
+        'correo_Personal',
         'imagen_Usuario',
         'activo',
         'id_Rol',
